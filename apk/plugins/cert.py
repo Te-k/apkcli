@@ -1,23 +1,7 @@
 #! /usr/bin/env python
 import os
 from apk.plugins.base import Plugin
-
-
-def convert_x509_name(name):
-    """
-    Convert x509 name to a string
-    """
-    types = {
-        'country_name': 'C',
-        'state_or_province_name': 'ST',
-        'locality_name': 'L',
-        'organization_name': 'O',
-        'organizational_unit_name': 'OU',
-        'common_name': 'CN',
-        'email_address': 'emailAddress'
-    }
-
-    return '/'.join(['{}={}'.format(types[attr], name.native[attr]) for attr in name.native])
+from apk.lib.utils import convert_x509_name
 
 
 class PluginCert(Plugin):
@@ -30,11 +14,11 @@ class PluginCert(Plugin):
     def run(self, args, apk, d, dx):
         if len(apk.get_certificates()) > 0:
             cert = apk.get_certificates()[0]
-            print("SHA1: {}".format(cert.sha1_fingerprint.replace(' ', '')))
-            print('Serial: {:X}'.format(cert.serial_number))
-            print("Issuer: {}".format(convert_x509_name(cert.issuer)))
-            print("Subject: {}".format(convert_x509_name(cert.subject)))
-            print("Not Before: {}".format(cert['tbs_certificate']['validity']['not_before'].native.strftime('%b %-d %X %Y %Z')))
-            print("Not After: {}".format(cert['tbs_certificate']['validity']['not_after'].native.strftime('%b %-d %X %Y %Z')))
+            print("{:15}{}".format("SHA1:", cert.sha1_fingerprint.replace(' ', '')))
+            print('{:15}{:X}'.format("Serial:", cert.serial_number))
+            print("{:15}{}".format("Issuer:", convert_x509_name(cert.issuer)))
+            print("{:15}{}".format("Subject:", convert_x509_name(cert.subject)))
+            print("{:15}{}".format("Not Before:", cert['tbs_certificate']['validity']['not_before'].native.strftime('%b %-d %X %Y %Z')))
+            print("{:15}{}".format("Not After:", cert['tbs_certificate']['validity']['not_after'].native.strftime('%b %-d %X %Y %Z')))
         else:
             print("No certificate here, weird")

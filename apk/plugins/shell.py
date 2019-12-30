@@ -16,4 +16,5 @@ class PluginShell(Plugin):
         self.parser = parser
 
     def run(self, args, a, d, dx):
+        print("Shell with androguard objects : a, d, dx")
         embed()
