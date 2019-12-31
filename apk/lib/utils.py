@@ -35,3 +35,18 @@ def get_urls(apk):
     for dex in apk.get_all_dex():
         res += re.findall(b'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', dex)
     return [s.decode('utf-8') for s in res]
+
+
+def get_intent_filers(apk):
+    """
+    Extract all intent filters from the Manifest
+    """
+    # FIXME : not sure this fully reproduce Koodous filters
+    res = []
+    filters = apk.xml['AndroidManifest.xml'].findall(".//intent-filter")
+    for f in filters:
+        for ff in f.findall('.//action'):
+            filt = ff.get('{http://schemas.android.com/apk/res/android}name')
+            if filt:
+                res.append(filt)
+    return res
