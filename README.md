@@ -19,24 +19,25 @@ apkcli is a CLI tool with multiple plugins :
 
 ```
 usage: apkcli [-h]
-              {cert,strings,manifest,frosting,info,yara,urls,permissions,find,json,shell,dex}
+              {arsc,cert,dex,find,frosting,info,json,manifest,permissions,shell,strings,urls,yara}
               ...
 
 positional arguments:
-  {cert,strings,manifest,frosting,info,yara,urls,permissions,find,json,shell,dex}
+  {arsc,cert,dex,find,frosting,info,json,manifest,permissions,shell,strings,urls,yara}
                         Plugins
+    arsc                List strings from resource files
     cert                Show the certificate
-    strings             Extract strings from the DEX files
-    manifest            Show the manifest
+    dex                 Extract the dex files
+    find                Find something in the APK
     frosting            Check if Google Play metadata (frosting) is in the APK
     info                Show the certificate
-    yara                Run a Yara run on the Dex file
-    urls                Extract URLs from the DEX files
-    permissions         List the permissions required by the app
-    find                Find something in the APK
     json                Extract information on the APK in JSON format
+    manifest            Show the manifest
+    permissions         List the permissions required by the app
     shell               Launch ipython shell to analyze the APK file
-    dex                 Extract the dex files
+    strings             Extract strings from the DEX files
+    urls                Extract URLs from the DEX files
+    yara                Run a Yara run on the Dex file
 
 optional arguments:
   -h, --help            show this help message and exit
