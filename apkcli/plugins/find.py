@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 import os
 import re
-from apk.plugins.base import Plugin
+from apkcli.plugins.base import Plugin
 
 
 class PluginFind(Plugin):

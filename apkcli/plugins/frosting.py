@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 import os
-from apk.plugins.base import Plugin
+from apkcli.plugins.base import Plugin
 
 
 BLOCK_TYPES = {

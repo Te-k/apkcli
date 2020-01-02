@@ -1,8 +1,9 @@
 import os
 import sys
 import argparse
-from apk.plugins.base import Plugin
+from apkcli.plugins.base import Plugin
 from androguard.misc import AnalyzeAPK
+from androguard.core import androconf
 
 
 def init_plugins():
@@ -35,11 +36,17 @@ def main():
 
     args = parser.parse_args()
     if hasattr(args, 'plugin'):
-        try:
-            a, d, dx = AnalyzeAPK(args.APK)
-            plugins[args.plugin].run(args, a, d, dx)
-        except FileNotFoundError:
+        if not os.path.isfile(args.APK):
             print("File not found")
+            sys.exit(1)
+
+        ret_type = androconf.is_android(args.APK)
+        if ret_type != "APK":
+            print("Not an APK file")
+            sys.exit(1)
+
+        a, d, dx = AnalyzeAPK(args.APK)
+        plugins[args.plugin].run(args, a, d, dx)
     else:
         parser.print_help()
 

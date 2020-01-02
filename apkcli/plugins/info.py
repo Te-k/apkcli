@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 import os
 import hashlib
-from apk.plugins.base import Plugin
-from apk.lib.utils import convert_x509_name, has_frosting, get_urls
+from apkcli.plugins.base import Plugin
+from apkcli.lib.utils import convert_x509_name, has_frosting, get_urls
 
 
 class PluginInfo(Plugin):

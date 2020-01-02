@@ -4,7 +4,7 @@ import json
 import hashlib
 import pefile
 import datetime
-from apk.plugins.base import Plugin
+from apkcli.plugins.base import Plugin
 from IPython import embed
 
 
