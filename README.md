@@ -18,16 +18,22 @@ pip install .
 apkcli is a CLI tool with multiple plugins :
 
 ```
-usage: apk [-h] {cert,strings,manifest,frosting,info,shell,dex} ...
+usage: apkcli [-h]
+              {cert,strings,manifest,frosting,info,urls,permissions,find,json,shell,dex}
+              ...
 
 positional arguments:
-  {cert,strings,manifest,frosting,info,shell,dex}
+  {cert,strings,manifest,frosting,info,urls,permissions,find,json,shell,dex}
                         Plugins
     cert                Show the certificate
     strings             Extract strings from the DEX files
     manifest            Show the manifest
     frosting            Check if Google Play metadata (frosting) is in the APK
     info                Show the certificate
+    urls                Extract URLs from the DEX files
+    permissions         List the permissions required by the app
+    find                Find something in the APK
+    json                Extract information on the APK in JSON format
     shell               Launch ipython shell to analyze the APK file
     dex                 Extract the dex files
 
