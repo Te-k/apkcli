@@ -1,5 +1,4 @@
 include LICENSE
 include README.md
 recursive-include apkcli *.py
-recursive-include apkcli/data *.yara
-
+recursive-include apkcli/data *.csv

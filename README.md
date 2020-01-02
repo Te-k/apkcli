@@ -19,17 +19,18 @@ apkcli is a CLI tool with multiple plugins :
 
 ```
 usage: apkcli [-h]
-              {cert,strings,manifest,frosting,info,urls,permissions,find,json,shell,dex}
+              {cert,strings,manifest,frosting,info,yara,urls,permissions,find,json,shell,dex}
               ...
 
 positional arguments:
-  {cert,strings,manifest,frosting,info,urls,permissions,find,json,shell,dex}
+  {cert,strings,manifest,frosting,info,yara,urls,permissions,find,json,shell,dex}
                         Plugins
     cert                Show the certificate
     strings             Extract strings from the DEX files
     manifest            Show the manifest
     frosting            Check if Google Play metadata (frosting) is in the APK
     info                Show the certificate
+    yara                Run a Yara run on the Dex file
     urls                Extract URLs from the DEX files
     permissions         List the permissions required by the app
     find                Find something in the APK
