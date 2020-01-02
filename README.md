@@ -1,6 +1,6 @@
 # apkcli
 
-Command line tool gathering information on APKs
+Command line tool gathering information on APKs based on [androguard](https://github.com/androguard/androguard).
 
 ## Install
 
