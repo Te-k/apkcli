@@ -65,14 +65,15 @@ class PluginFind(Plugin):
                     for f in c.get_fields():
                         if f.get_field().get_descriptor() == 'Ljava/lang/String;':
                             if f.get_field().get_init_value():
-                                if args.regex:
-                                    if re.match(args.STRING, f.get_field().get_init_value().get_value()):
-                                        print("String found as the field {} of the class {}".format(f.name, c.name[1:-1].replace('/', '.')))
-                                        found = True
-                                else:
-                                    if args.STRING.lower() in f.get_field().get_init_value().get_value().lower():
-                                        print("String found as the field {} of the class {}".format(f.name, c.name[1:-1].replace('/', '.')))
-                                        found = True
+                                if f.get_field().get_init_value().get_value():
+                                    if args.regex:
+                                        if re.match(args.STRING, f.get_field().get_init_value().get_value()):
+                                            print("String found as the field {} of the class {}".format(f.name, c.name[1:-1].replace('/', '.')))
+                                            found = True
+                                    else:
+                                        if args.STRING.lower() in f.get_field().get_init_value().get_value().lower():
+                                            print("String found as the field {} of the class {}".format(f.name, c.name[1:-1].replace('/', '.')))
+                                            found = True
                     # Search in methods as constants
                     for m in c.get_methods():
                         if not m.is_external():

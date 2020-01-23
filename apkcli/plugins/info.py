@@ -47,6 +47,19 @@ class PluginInfo(Plugin):
             print("{:15} {}".format("Not After:", cert['tbs_certificate']['validity']['not_after'].native.strftime('%b %-d %X %Y %Z')))
         else:
             print("No certificate here, weird")
+        print("")
+        print("Manifest")
+        print("="*80)
+        if apk.get_main_activity():
+            print("Main Activity: {}".format(apk.get_main_activity()))
+        if len(apk.get_services()) > 0:
+            print("Services:")
+            for s in apk.get_services():
+                print("- " + s)
+        if len(apk.get_receivers()) > 0:
+            print("Receivers:")
+            for r in apk.get_receivers():
+                print("- " + r)
 
         print("")
         print("Permissions")
