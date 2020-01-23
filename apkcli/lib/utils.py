@@ -50,3 +50,14 @@ def get_intent_filers(apk):
             if filt:
                 res.append(filt)
     return res
+
+
+def has_classnames_obfuscated(dx):
+    """
+    Check if the APK has the class names obfuscated
+    Count the number of classes with a name of one character
+    Returns True of more than 50% of classes have names of 1 char
+    """
+    cn = [c.name[1:-1].split('/') for c in dx.get_classes()]
+    cnn = [len(a.split('$')[0]) for b in cn for a in b]
+    return (cnn.count(1) / len(cnn)) > 0.5
