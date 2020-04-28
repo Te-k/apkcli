@@ -28,6 +28,7 @@ positional arguments:
     arsc                List strings from resource files
     cert                Show the certificate
     dex                 Extract the dex files
+    enum                Enumerate interesting informations
     find                Find something in the APK
     frosting            Check if Google Play metadata (frosting) is in the APK
     info                Show the certificate

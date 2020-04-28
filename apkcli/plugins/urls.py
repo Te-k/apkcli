@@ -12,7 +12,6 @@ class PluginUrls(Plugin):
         self.parser = parser
 
     def run(self, args, a, d, dx):
-        strings = []
         dex_values = list(a.get_all_dex())
         if len(dex_values) == 0:
             print("No DEX files")

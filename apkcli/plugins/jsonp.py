@@ -34,7 +34,7 @@ class PluginJson(Plugin):
             'certificate': {},
             'wearable': apk.is_wearable(),
             'max_sdk_version': (apk.get_max_sdk_version()),
-            'min_sdk_version': int(apk.get_min_sdk_version()),
+            'min_sdk_version': int(apk.get_min_sdk_version()) if apk.get_min_sdk_version() is not None else "",
             'version_code': apk.xml['AndroidManifest.xml'].get('{http://schemas.android.com/apk/res/android}versionCode'),
             'libraries': list(apk.get_libraries()),
             'androidtv': apk.is_androidtv(),
