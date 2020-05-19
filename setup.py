@@ -14,7 +14,7 @@ setup(
     author_email='tek@randhome.io',
     keywords='malware',
     include_package_data=True,
-    install_requires=['androguard==3.3.5', 'ipython', 'ssdeep==3.4', 'yara-python==3.11.0', 'lxml==4.2.6'],
+    install_requires=['androguard==3.3.5', 'ipython', 'ssdeep==3.4', 'yara-python==3.11.0', 'lxml>=4.2.6'],
     license='MIT',
     python_requires='>=3.5',
     packages=['apkcli', 'apkcli.plugins', 'apkcli.lib', 'apkcli.data'],
