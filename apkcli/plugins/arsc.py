@@ -23,9 +23,13 @@ class PluginArsc(Plugin):
             x = etree.fromstring(xmltree)
             for elt in x:
                 if elt.get('type') == 'string':
-                    val = arscobj.get_resolved_res_configs(int(elt.get('id')[2:], 16))[0][1]
-                    print('{}\t{}\t{}'.format(
-                        elt.get('id'),
-                        elt.get('name'),
-                        val
-                    ))
+                    _id = int(elt.get('id')[2:], 16)
+                    try:
+                        val = arscobj.get_resolved_res_configs(_id)[0][1]
+                        print('{}\t{}\t{}'.format(
+                            elt.get('id'),
+                            elt.get('name'),
+                            val
+                        ))
+                    except IndexError:
+                        print("{} : Resource not found".format(elt.get('id')))
