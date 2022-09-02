@@ -1,6 +1,4 @@
 #! /usr/bin/env python
-import os
-import re
 import yara
 from apkcli.plugins.base import Plugin
 

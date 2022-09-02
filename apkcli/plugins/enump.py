@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-import os
 import re
 from apkcli.plugins.base import Plugin
 from lxml import etree
@@ -11,16 +10,15 @@ class PluginEnum(Plugin):
 
     def add_arguments(self, parser):
         self.parser = parser
-        self.uri_regex = b'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
-        self.ip_regex = b'(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(?<!172\.(16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31))(?<!127)(?<!^10)(?<!^0)\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(?<!192\.168)(?<!172\.(16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31))\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(?<!\.255$))'
+        self.uri_regex = br"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
+        self.ip_regex = br"(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(?<!172\.(16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31))(?<!127)(?<!^10)(?<!^0)\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(?<!192\.168)(?<!172\.(16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31))\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(?<!\.255$))"  # noqa: E501
         # Inspired by https://github.com/shivsahni/APKEnum/blob/master/APKEnum.py
         self.s3_regexes = [
-            b"https*://(.+?)\.s3\..+?\.amazonaws\.com\/.+?",
-            b"https*://s3\..+?\.amazonaws\.com\/(.+?)\/.+?",
-            b"https*://(.+?)\.s3-website\..+?\.amazonaws\.com",
-            b"https*://(.+?)\.s3-website-.+?\.amazonaws\.com"
+            rb"https*://(.+?)\.s3\..+?\.amazonaws\.com\/.+?",
+            rb"https*://s3\..+?\.amazonaws\.com\/(.+?)\/.+?",
+            rb"https*://(.+?)\.s3-website\..+?\.amazonaws\.com",
+            rb"https*://(.+?)\.s3-website-.+?\.amazonaws\.com"
         ]
-
 
     def get_urls(self, a):
         res = []
@@ -53,7 +51,6 @@ class PluginEnum(Plugin):
                 if val.endswith('firebaseio.com'):
                     return val
         return None
-
 
     def run(self, args, a, d, dx):
         dex_values = list(a.get_all_dex())

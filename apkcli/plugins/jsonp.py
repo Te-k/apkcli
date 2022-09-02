@@ -1,6 +1,4 @@
 #! /usr/bin/env python
-import os
-import ssdeep
 import hashlib
 import json
 from apkcli.plugins.base import Plugin
@@ -20,8 +18,13 @@ class PluginJson(Plugin):
         """
         res = []
         for p in permissions:
-            if not p.startswith('android.permission') and not p.startswith('com.google') and not p.startswith('com.android'):
-                res.append(p)
+            if p.startswith('android.permission'):
+                continue
+            if p.startswith('com.google'):
+                continue
+            if p.startswith('com.android'):
+                continue
+            res.append(p)
         return res
 
     def run(self, args, apk, d, dx):
@@ -68,8 +71,6 @@ class PluginJson(Plugin):
             m.update(dex_values[dex])
             res['dexes'][dex_names[dex][:-4]] = {
                 'sha256': m.hexdigest(),
-                'ssdeep': ssdeep.hash(dex_values[dex])
             }
 
         print(json.dumps(res, indent=4, sort_keys=True))
-

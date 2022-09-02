@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-import os
 from apkcli.plugins.base import Plugin
 from apkcli.lib.utils import convert_x509_name
 
@@ -18,7 +17,11 @@ class PluginCert(Plugin):
             print('{:15}{:X}'.format("Serial:", cert.serial_number))
             print("{:15}{}".format("Issuer:", convert_x509_name(cert.issuer)))
             print("{:15}{}".format("Subject:", convert_x509_name(cert.subject)))
-            print("{:15}{}".format("Not Before:", cert['tbs_certificate']['validity']['not_before'].native.strftime('%b %-d %X %Y %Z')))
-            print("{:15}{}".format("Not After:", cert['tbs_certificate']['validity']['not_after'].native.strftime('%b %-d %X %Y %Z')))
+            print("{:15}{}".format(
+                "Not Before:",
+                cert['tbs_certificate']['validity']['not_before'].native.strftime('%b %-d %X %Y %Z')))
+            print("{:15}{}".format(
+                "Not After:",
+                cert['tbs_certificate']['validity']['not_after'].native.strftime('%b %-d %X %Y %Z')))
         else:
             print("No certificate here, weird")

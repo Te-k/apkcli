@@ -1,6 +1,4 @@
 #! /usr/bin/env python
-import os
-import hashlib
 from apkcli.plugins.base import Plugin
 from apkcli.lib.utils import has_frosting, has_classnames_obfuscated
 

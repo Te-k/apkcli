@@ -1,5 +1,1 @@
-androguard==3.3.5
-ipython
-ssdeep==3.4
-yara-python==3.11.0
-lxml>=4.2.6
+.

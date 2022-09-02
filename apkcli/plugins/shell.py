@@ -1,9 +1,4 @@
 #! /usr/bin/env python
-import sys
-import json
-import hashlib
-import pefile
-import datetime
 from apkcli.plugins.base import Plugin
 from IPython import embed
 

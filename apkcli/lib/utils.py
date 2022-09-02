@@ -33,7 +33,7 @@ def get_urls(apk):
     """
     res = []
     for dex in apk.get_all_dex():
-        res += re.findall(b'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', dex)
+        res += re.findall(br"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", dex)
     return [s.decode('utf-8') for s in res]
 
 

@@ -1,6 +1,4 @@
 #! /usr/bin/env python
-import os
-import re
 import sys
 from apkcli.plugins.base import Plugin
 from lxml import etree

@@ -14,14 +14,14 @@ setup(
     author_email='tek@randhome.io',
     keywords='malware',
     include_package_data=True,
-    install_requires=['androguard==3.3.5', 'ipython', 'ssdeep==3.4', 'yara-python==4.1.0', 'lxml>=4.2.6'],
+    install_requires=['androguard==3.3.5', 'ipython', 'yara-python==4.1.0', 'lxml>=4.2.6'],
     license='MIT',
     python_requires='>=3.5',
     packages=['apkcli', 'apkcli.plugins', 'apkcli.lib', 'apkcli.data'],
     package_dir={'apkcli.lib': 'apkcli/lib'},
     package_data={'apkcli': ['apkcli/data/*.csv']},
-    entry_points= {
-        'console_scripts': [ 'apkcli=apkcli.main:main' ]
+    entry_points={
+        'console_scripts': ['apkcli=apkcli.main:main']
     },
     classifiers=[
         "Programming Language :: Python :: 3",
