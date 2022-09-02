@@ -2,9 +2,9 @@
 
 Command line tool gathering information on APKs based on [androguard](https://github.com/androguard/androguard).
 
-## Install
+[![PyPI](https://img.shields.io/pypi/v/apkcli)](https://pypi.org/project/apkcli/) [![PyPI - Downloads](https://img.shields.io/pypi/dm/apkcli)](https://pypistats.org/packages/apkcli) [![PyPI - License](https://img.shields.io/pypi/l/apkcli)](LICENSE) [![GitHub issues](https://img.shields.io/github/issues/te-k/apkcli)](https://github.com/Te-k/apkcli/issues)
 
-You need to first install [python-ssdeep requirements](https://python-ssdeep.readthedocs.io/en/latest/installation.html).
+## Install
 
 You can install apkcli directly from [pypi](https://pypi.org/project/apkcli/) : `pip install apkcli`
 
