@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 from apkcli.plugins.base import Plugin
 
-
 BLOCK_TYPES = {
     0x7109871a: 'SIGNv2',
     0xf05368c0: 'SIGNv3',

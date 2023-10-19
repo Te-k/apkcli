@@ -1,7 +1,9 @@
 #! /usr/bin/env python
 import sys
-from apkcli.plugins.base import Plugin
+
 from lxml import etree
+
+from apkcli.plugins.base import Plugin
 
 
 class PluginArsc(Plugin):

@@ -1,8 +1,9 @@
 #! /usr/bin/env python
 import hashlib
 import json
+
+from apkcli.lib.utils import convert_x509_name, get_intent_filers, get_urls
 from apkcli.plugins.base import Plugin
-from apkcli.lib.utils import get_urls, get_intent_filers, convert_x509_name
 
 
 class PluginJson(Plugin):

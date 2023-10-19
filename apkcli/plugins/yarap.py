@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 import yara
+
 from apkcli.plugins.base import Plugin
 
 

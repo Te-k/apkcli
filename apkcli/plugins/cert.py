@@ -1,6 +1,6 @@
 #! /usr/bin/env python
-from apkcli.plugins.base import Plugin
 from apkcli.lib.utils import convert_x509_name
+from apkcli.plugins.base import Plugin
 
 
 class PluginCert(Plugin):

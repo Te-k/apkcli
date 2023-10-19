@@ -61,3 +61,22 @@ def has_classnames_obfuscated(dx):
     cn = [c.name[1:-1].split('/') for c in dx.get_classes()]
     cnn = [len(a.split('$')[0]) for b in cn for a in b]
     return (cnn.count(1) / len(cnn)) > 0.5
+
+
+DANGEROUS_PERMISSIONS = [
+    "android.permission.ACCESS_FINE_LOCATION",
+    "android.permission.ACCESS_COARSE_LOCATION",
+    "android.permission.READ_CALENDAR",
+    "android.permission.WRITE_CALENDAR",
+    "android.permission.CAMERA",
+    "android.permission.READ_CONTACTS",
+    "android.permission.WRITE_CONTACTS",
+    "android.permission.RECORD_AUDIO",
+    "android.permission.READ_PHONE_NUMBERS",
+    "android.permission.CALL_PHONE",
+    "android.permission.ANSWER_PHONE_CALLS",
+    "android.permission.SEND_SMS",
+    "android.permission.RECEIVE_SMS",
+    "android.permission.READ_SMS",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+]

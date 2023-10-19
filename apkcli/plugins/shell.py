@@ -1,6 +1,7 @@
 #! /usr/bin/env python
-from apkcli.plugins.base import Plugin
 from IPython import embed
+
+from apkcli.plugins.base import Plugin
 
 
 class PluginShell(Plugin):

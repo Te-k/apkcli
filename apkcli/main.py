@@ -1,9 +1,11 @@
+import argparse
 import os
 import sys
-import argparse
-from apkcli.plugins.base import Plugin
-from androguard.misc import AnalyzeAPK
+
 from androguard.core import androconf
+from androguard.misc import AnalyzeAPK
+
+from apkcli.plugins.base import Plugin
 
 
 def init_plugins():

@@ -1,7 +1,11 @@
 #! /usr/bin/env python
 import hashlib
+
+from rich.console import Console
+
+from apkcli.lib.utils import (DANGEROUS_PERMISSIONS, convert_x509_name,
+                              get_urls, has_frosting)
 from apkcli.plugins.base import Plugin
-from apkcli.lib.utils import convert_x509_name, has_frosting, get_urls
 
 
 class PluginInfo(Plugin):
@@ -19,9 +23,11 @@ class PluginInfo(Plugin):
             print("%-15s %s" % (algo.upper()+":", m.hexdigest()))
 
     def run(self, args, apk, d, dx):
+        console = Console()
+
         # General Information
-        print("Metadata")
-        print("="*80)
+        console.print("Metadata", style="blue")
+        console.print("="*80, style="blue")
         with open(args.APK, 'rb') as f:
             self.display_hashes(f.read())
         print("{:15} {}".format("Package Name:", apk.get_package()))
@@ -34,8 +40,8 @@ class PluginInfo(Plugin):
         print("")
 
         # Certificate
-        print("Certificate")
-        print("="*80)
+        console.print("Certificate", style="blue")
+        console.print("="*80, style="blue")
         if len(apk.get_certificates()) > 0:
             cert = apk.get_certificates()[0]
             print("{:15} {}".format("SHA1:", cert.sha1_fingerprint.replace(' ', '')))
@@ -49,10 +55,10 @@ class PluginInfo(Plugin):
                 "Not After:",
                 cert['tbs_certificate']['validity']['not_after'].native.strftime('%b %-d %X %Y %Z')))
         else:
-            print("No certificate here, weird")
+            console.print("No certificate here, weird", style="red")
         print("")
-        print("Manifest")
-        print("="*80)
+        console.print("Manifest", style="blue")
+        console.print("="*80, style="blue")
         if apk.get_main_activity():
             print("Main Activity: {}".format(apk.get_main_activity()))
         if len(apk.get_services()) > 0:
@@ -65,13 +71,16 @@ class PluginInfo(Plugin):
                 print("- " + r)
 
         print("")
-        print("Permissions")
-        print("="*80)
-        for p in apk.get_permissions():
-            print(p)
+        console.print("Permissions", style="blue")
+        console.print("="*80, style="blue")
+        for p in sorted(apk.get_permissions()):
+            if p in DANGEROUS_PERMISSIONS:
+                console.print(p, style="bold red")
+            else:
+                print(p)
 
         print("")
-        print("Urls")
-        print("="*80)
-        for u in get_urls(apk):
+        console.print("Urls", style="blue")
+        console.print("="*80, style="blue")
+        for u in sorted(get_urls(apk)):
             print(u)
