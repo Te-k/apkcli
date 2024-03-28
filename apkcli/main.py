@@ -4,6 +4,7 @@ import sys
 
 from androguard.core import androconf
 from androguard.misc import AnalyzeAPK
+from loguru import logger
 
 from apkcli.plugins.base import Plugin
 
@@ -22,6 +23,8 @@ def init_plugins():
 
 
 def main():
+    # Disable androguard logging
+    logger.disable("androguard")
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(help='Plugins')
 

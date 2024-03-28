@@ -33,6 +33,7 @@ positional arguments:
     enum                Enumerate interesting informations
     find                Find something in the APK
     frosting            Check if Google Play metadata (frosting) is in the APK
+    func                Provides details on a function
     info                Show the certificate
     json                Extract information on the APK in JSON format
     manifest            Show the manifest
